@@ -9,7 +9,8 @@
 require("tuneR") 
 
 
-Wave <- loadWav() {
+loadWav <- function() {
   file_name <- file.choose()
   return(readWave(file_name))
 }
+

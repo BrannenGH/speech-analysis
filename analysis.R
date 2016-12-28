@@ -16,8 +16,8 @@ loadWave <- function() {
 }
 
 # This only works for signal channel wave files at the moment, also I need to work on custom windows, this displays simply raw wave data points in a 3D space
-displaySpectogram <- function(wave, is_right = false) {
-  if is_right == true{
+displaySpectogram <- function(wave, is_right=false) {
+  if (is_right){
     return(specgram(wave@right))
   }
   else {

@@ -6,7 +6,7 @@
 ###################################
 # WARNING: A Fortran compiler is needed for the proper installation of tuneR
 ###################################
-require("tuneR") 
+require("tuneR")
 require("signal")
 
 loadWave <- function() {
@@ -16,8 +16,15 @@ loadWave <- function() {
 }
 
 # This only works for signal channel wave files at the moment, also I need to work on custom windows, this displays simply raw wave data points in a 3D space
-displaySpectogram <- function(wave) {
-  return(specgram(wave@left))
+displaySpectogram <- function(wave, is_right = false) {
+  if is_right == true{
+    return(specgram(wave@right))
+  }
+  else {
+    return(specgram(wave@left))
+  }
 }
 
-
+viewSpectum <- function(point, wave) {
+  return(wave@left)
+}

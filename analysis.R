@@ -6,8 +6,20 @@
 ###################################
 # WARNING: A Fortran compiler is needed for the proper installation of tuneR
 ###################################
-require("tuneR")
-require("signal")
+
+if (!(require("tuneR"))){
+install.packages("tuneR")
+}
+if (!(require("signal"))){
+install.packages("signal")
+}
+if (!(require("plotrix"))){
+install.packages("plotrix")
+}
+
+library("tuneR")
+library("signal")
+library("plotrix")
 
 loadWave <- function() {
   file_name <- file.choose()

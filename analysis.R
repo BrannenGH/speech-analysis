@@ -8,13 +8,15 @@
 ###################################
 
 if (!(require("tuneR"))){
-install.packages("tuneR")
+  print("A Fortran complier is need for thee proper installation of tuneR. If one is not installed in a way that it can be found, the installation will fail")
+  install.packages("tuneR")
 }
 if (!(require("signal"))){
-    install.packages("signal")
+  print("A Fortran complier is need for thee proper installation of signal. If one is not installed in a way that it can be found, the installation will fail")
+  install.packages("signal")
 }
 if (!(require("plotrix"))){
-install.packages("plotrix")
+  install.packages("plotrix")
 }
 
 library("tuneR")

@@ -43,7 +43,7 @@ loadWave <- function(unix_shorthand = FALSE) {
 
 # This only works for signal channel wave files at the moment, also I need to work on custom windows, this displays simply raw wave data points in a 3D space
 displaySpectogram <- function(wave, channel="left") {
-  return(specgram(wave@channel))
+  return(specgram(eval(parse(text = (paste("wave@",channel,sep=""))))))
 }
 
 viewSpectum <- function(point, wave) {

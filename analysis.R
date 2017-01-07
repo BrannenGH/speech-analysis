@@ -7,22 +7,13 @@
 # WARNING: A Fortran compiler is needed for the proper installation of tuneR
 ###################################
 
-if (!(require("tuneR"))){
-  print("A Fortran complier is need for thee proper installation of tuneR. If one is not installed in a way that it can be found, the installation will fail")
-  install.packages("tuneR")
+print("A FORTRAN COMPLIER IS NEEDED FOR THE INSTALLATION OF SIGNAL!")
+for (package in c("tuneR", "signal", "stats", "plotrix")) {
+  if (!(require(package, character.only = TRUE))){
+    install.packages(package)
+  }
+  library(package, character.only = TRUE)
 }
-if (!(require("signal"))){
-  print("A Fortran complier is need for thee proper installation of signal. If one is not installed in a way that it can be found, the installation will fail")
-  install.packages("signal")
-}
-if (!(require("plotrix"))){
-  install.packages("plotrix")
-}
-
-library("tuneR")
-library("signal")
-library("plotrix")
-library("tools")
 
 #loadWave <- function() {
 #  relative_file_name <- readline(prompt="Enter a file location: ")
@@ -36,17 +27,18 @@ library("tools")
 loadWave <- function(unix_shorthand = FALSE) {
   file_name <- file.choose()
   if (unix_shorthand) {
-    file_name <- system2(paste("realpath ", "\"", gsub("\'","",file_name), "\"", sep=""), stdout=TRUE)
+    file_name <- system2("realpath", args = paste("\"", gsub("\'","",file_name), "\"", sep=""), stdout=TRUE)
   }
   return(readWave(file_path_as_absolute(gsub("\'","",file_name))))
 }
 
 # This only works for signal channel wave files at the moment, also I need to work on custom windows, this displays simply raw wave data points in a 3D space
-displaySpectogram <- function(wave, channel="left", window_size,) {
+displaySpectogram <- function(wave, channel="left", window_size = 0.005) {
   return(specgram(eval(parse(text = (paste("wave@",channel,sep=""))))), n = window_size)
 }
 
 viewSpectum <- function(point, wave) {
+  #Do Fourier analysis to get indiviudal points
   return(wave@left)
 }
 
